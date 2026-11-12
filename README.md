@@ -2,8 +2,7 @@
 
 A full-stack mobile app for browsing Warhammer 40,000 units and putting together an army list with a running points total.
 
-**Live demo:** [warhammer-army-builder-app.vercel.app](https://warhammer-army-builder-app.vercel.app)
-**API:** [warhammer-army-builder-api.vercel.app/api/units](https://warhammer-army-builder-api.vercel.app/api/units)
+**Live demo:** [warhammer-army-builder-app.vercel.app](https://warhammer-army-builder-app.vercel.app) · **API:** [warhammer-army-builder-api.vercel.app/api/units](https://warhammer-army-builder-api.vercel.app/api/units)
 
 - **App:** React Native (Expo), runs on Android, iOS and web
 - **API:** Node.js + Express REST API
