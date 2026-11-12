@@ -5,7 +5,6 @@ import {
   FlatList,
   StyleSheet,
   ActivityIndicator,
-  Platform,
   Pressable,
   useWindowDimensions,
 } from "react-native";
@@ -90,7 +89,7 @@ export default function HomeScreen({ navigation }) {
         style={styles.list}
         contentContainerStyle={styles.listContent}
         columnWrapperStyle={numColumns > 1 ? styles.row : undefined}
-        showsVerticalScrollIndicator={Platform.OS === "web"}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
           const factionColor = getFactionColor(item.faction);
 
