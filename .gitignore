@@ -1,0 +1,30 @@
+# Secrets – never commit these
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Expo / build output
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+/warhammer-reactnative/ios
+/warhammer-reactnative/android
+.metro-health-check*
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+
+# Logs & OS files
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.DS_Store
+Thumbs.db
+/package-lock.json
