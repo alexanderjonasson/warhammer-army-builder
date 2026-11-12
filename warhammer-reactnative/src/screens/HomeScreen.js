@@ -5,6 +5,7 @@ import {
   FlatList,
   StyleSheet,
   ActivityIndicator,
+  Platform,
   Pressable,
   useWindowDimensions,
 } from "react-native";
@@ -89,7 +90,7 @@ export default function HomeScreen({ navigation }) {
         style={styles.list}
         contentContainerStyle={styles.listContent}
         columnWrapperStyle={numColumns > 1 ? styles.row : undefined}
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={Platform.OS === "web"}
         renderItem={({ item }) => {
           const factionColor = getFactionColor(item.faction);
 
@@ -223,12 +224,16 @@ const styles = StyleSheet.create({
     color: "#000",
     fontWeight: "700",
   },
+  // The list spans the full width so it scrolls wherever the pointer is;
+  // only its content is limited in width and centred.
   list: {
+    flex: 1,
+    width: "100%",
+  },
+  listContent: {
     width: "100%",
     maxWidth: CONTENT_MAX_WIDTH,
     alignSelf: "center",
-  },
-  listContent: {
     paddingTop: 4,
     paddingBottom: 30,
   },

@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Platform,
+  Pressable,
+} from "react-native";
 import { useArmy } from "../context/ArmyContext";
 import BackButton from "../components/BackButton";
 import { getFactionColor } from "../theme/factions";
@@ -54,7 +61,7 @@ export default function ArmyScreen({ navigation }) {
           data={groupedUnits}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.listContent}
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={Platform.OS === "web"}
           renderItem={({ item }) => {
             const factionColor = getFactionColor(item.faction);
 
