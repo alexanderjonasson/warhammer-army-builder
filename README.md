@@ -6,7 +6,12 @@ A full-stack mobile app for browsing Warhammer 40,000 units and putting together
 - **API:** Node.js + Express REST API
 - **Database:** MongoDB Atlas via Mongoose
 
-<!-- Add screenshots here, e.g. ![Home screen](docs/home.png) -->
+![Home screen](docs/home.png)
+
+<p>
+  <img src="docs/army-builder.png" alt="Army builder" width="58%" />
+  <img src="docs/unit-details.png" alt="Unit details" width="38%" />
+</p>
 
 ## Features
 
