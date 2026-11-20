@@ -1,7 +1,11 @@
 import React from "react";
 import { Pressable, Text, StyleSheet } from "react-native";
 
-export default function BackButton({ onPress }) {
+type BackButtonProps = {
+  onPress: () => void;
+};
+
+export default function BackButton({ onPress }: BackButtonProps) {
   return (
     <Pressable style={styles.backButton} onPress={onPress}>
       <Text style={styles.backText}>← Back</Text>

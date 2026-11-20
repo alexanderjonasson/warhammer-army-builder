@@ -1,15 +1,23 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
+import type { ArmyUnit } from "../types";
 
-const ArmyContext = createContext();
+type ArmyContextValue = {
+  armyUnits: ArmyUnit[];
+  addUnit: (unit: ArmyUnit) => void;
+  removeUnit: (id: string) => void;
+  totalPoints: number;
+};
 
-export function ArmyProvider({ children }) {
-  const [armyUnits, setArmyUnits] = useState([]);
+const ArmyContext = createContext<ArmyContextValue | null>(null);
 
-  const addUnit = (unit) => {
+export function ArmyProvider({ children }: { children: React.ReactNode }) {
+  const [armyUnits, setArmyUnits] = useState<ArmyUnit[]>([]);
+
+  const addUnit = (unit: ArmyUnit) => {
     setArmyUnits((prev) => [...prev, unit]);
   };
 
-  const removeUnit = (id) => {
+  const removeUnit = (id: string) => {
     setArmyUnits((prev) => {
       const index = prev.findIndex((unit) => unit.id === id);
       if (index === -1) return prev;
