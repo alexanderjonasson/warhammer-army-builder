@@ -2,7 +2,7 @@
 // On Vercel, api/index.js is used instead.
 require("dotenv").config();
 const app = require("./app");
-const connectDB = require("./db");
+const { connectDB } = require("./db");
 
 const PORT = process.env.PORT || 5000;
 
