@@ -5,7 +5,7 @@ A full-stack mobile app for browsing Warhammer 40,000 units and putting together
 **Live demo:** [warhammer-army-builder-app.vercel.app](https://warhammer-army-builder-app.vercel.app) · **API:** [warhammer-army-builder-api.vercel.app/api/units](https://warhammer-army-builder-api.vercel.app/api/units)
 
 - **App:** React Native (Expo), runs on Android, iOS and web
-- **API:** Node.js + Express REST API
+- **API:** Node.js + Express REST API written in TypeScript
 - **Database:** MongoDB Atlas via Mongoose
 
 ![Home screen](docs/home.png)
@@ -33,9 +33,12 @@ warhammer-reactnative/   Expo app
   src/components/        Shared UI components
   src/theme/             Faction colours
   src/config.js          API URL configuration
-warhammer_api/           Express API
-  models/                Mongoose schema for units
-  server.js              Routes and database connection
+warhammer_api/           Express API (TypeScript)
+  models/                Mongoose schema and Unit type
+  api/index.ts           Vercel serverless entry point
+  app.ts                 Express app and routes
+  db.ts                  Shared MongoDB connection
+  server.ts              Local development server
 ```
 
 ## API
@@ -55,8 +58,10 @@ Requirements: Node.js 18 or later, and a MongoDB Atlas cluster (the free tier is
 cd warhammer_api
 cp .env.example .env    # then fill in MONGO_URI
 npm install
-npm start
+npm run dev
 ```
+
+`npm run dev` starts the API at http://localhost:5000 and restarts it when you save a file. Run `npm run typecheck` to check the whole API for type errors.
 
 ### 2. App
 
