@@ -1,6 +1,6 @@
 export const GOLD = "#d4af37";
 
-const FACTION_COLORS = {
+const FACTION_COLORS: Record<string, string> = {
   Necrons: "#39ff88",
   Orks: "#2ecc71",
   "Space Marines": "#4da3ff",
@@ -8,6 +8,6 @@ const FACTION_COLORS = {
   Tyranids: "#b56cff",
 };
 
-export function getFactionColor(faction) {
+export function getFactionColor(faction: string): string {
   return FACTION_COLORS[faction] ?? GOLD;
 }
