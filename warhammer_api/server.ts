@@ -1,10 +1,10 @@
-// Local development entry point: `npm start`.
-// On Vercel, api/index.js is used instead.
-require("dotenv").config();
-const app = require("./app");
-const { connectDB } = require("./db");
+// Local development entry point: `npm run dev`.
+// On Vercel, api/index.ts is used instead.
+import "dotenv/config";
+import app from "./app";
+import { connectDB } from "./db";
 
-const PORT = process.env.PORT || 5000;
+const PORT = Number(process.env.PORT) || 5000;
 
 async function start() {
   try {

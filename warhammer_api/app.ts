@@ -1,7 +1,7 @@
-const express = require("express");
-const cors = require("cors");
-const { connectDB } = require("./db");
-const { UnitModel } = require("./models/warhammer");
+import express from "express";
+import cors from "cors";
+import { connectDB } from "./db";
+import { UnitModel } from "./models/warhammer";
 
 const app = express();
 
@@ -23,4 +23,4 @@ app.get("/api/units", async (req, res) => {
   }
 });
 
-module.exports = app;
+export default app;
