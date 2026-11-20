@@ -3,12 +3,18 @@ import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import { useArmy } from "../context/ArmyContext";
 import BackButton from "../components/BackButton";
 import { getFactionColor } from "../theme/factions";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { ArmyUnit, RootStackParamList } from "../types";
+
+type Props = NativeStackScreenProps<RootStackParamList, "Army">;
+
+type GroupedUnit = ArmyUnit & { count: number };
 
 const CARD_MAX_WIDTH = 520;
 const GRID_GAP = 16;
 const CONTENT_MAX_WIDTH = CARD_MAX_WIDTH * 2 + GRID_GAP;
 
-export default function ArmyScreen({ navigation }) {
+export default function ArmyScreen({ navigation }: Props) {
   const { armyUnits, removeUnit, totalPoints } = useArmy();
 
   const groupedUnits = Object.values(
@@ -22,7 +28,7 @@ export default function ArmyScreen({ navigation }) {
         acc[unit.id].count += 1;
       }
       return acc;
-    }, {}),
+    }, {} as Record<string, GroupedUnit>),
   );
 
   return (

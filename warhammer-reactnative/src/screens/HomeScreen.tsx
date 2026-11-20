@@ -12,15 +12,19 @@ import axios from "axios";
 import { useArmy } from "../context/ArmyContext";
 import { API_URL } from "../config";
 import { GOLD, getFactionColor } from "../theme/factions";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { RootStackParamList, Unit } from "../types";
+
+type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
 const CARD_MAX_WIDTH = 520;
 const GRID_GAP = 16;
 const CONTENT_MAX_WIDTH = CARD_MAX_WIDTH * 2 + GRID_GAP;
 
-export default function HomeScreen({ navigation }) {
-  const [units, setUnits] = useState([]);
+export default function HomeScreen({ navigation }: Props) {
+  const [units, setUnits] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const { armyUnits, addUnit, removeUnit, totalPoints } = useArmy();
   const { width } = useWindowDimensions();
   const numColumns = width > 900 ? 2 : 1;
@@ -29,7 +33,7 @@ export default function HomeScreen({ navigation }) {
     setLoading(true);
     setError(null);
     axios
-      .get(`${API_URL}/api/units`, { timeout: 60000 })
+      .get<Unit[]>(`${API_URL}/api/units`, { timeout: 60000 })
       .then((res) => setUnits(res.data))
       .catch(() => setError("Could not load units. Is the API running?"))
       .finally(() => setLoading(false));

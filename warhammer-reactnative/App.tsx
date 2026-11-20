@@ -6,8 +6,9 @@ import { ArmyProvider } from "./src/context/ArmyContext";
 import HomeScreen from "./src/screens/HomeScreen";
 import UnitDetailsScreen from "./src/screens/UnitDetailsScreen";
 import ArmyScreen from "./src/screens/ArmyScreen";
+import type { RootStackParamList } from "./src/types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (

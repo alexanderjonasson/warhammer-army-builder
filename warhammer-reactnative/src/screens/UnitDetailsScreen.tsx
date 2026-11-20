@@ -2,8 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import BackButton from "../components/BackButton";
 import { getFactionColor } from "../theme/factions";
+import type { ImageSourcePropType } from "react-native";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../types";
 
-function getUnitImage(name) {
+type Props = NativeStackScreenProps<RootStackParamList, "UnitDetails">;
+
+function getUnitImage(name: string): ImageSourcePropType | null {
   switch (name) {
     case "Necron Warriors":
       return require("../../assets/images/units/necron-warriors.webp");
@@ -30,11 +35,11 @@ function getUnitImage(name) {
   }
 }
 
-function getFactionTheme(faction) {
+function getFactionTheme(faction: string) {
   return { primary: getFactionColor(faction) };
 }
 
-export default function UnitDetailsScreen({ route, navigation }) {
+export default function UnitDetailsScreen({ route, navigation }: Props) {
   const { name, faction, role, points } = route.params;
 
   const image = getUnitImage(name);
